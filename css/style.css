@@ -1,0 +1,551 @@
+/* --- BASIC RESET --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- FONT VARIABLES --- */
+:root {
+  --font-heading: 'Playfair Display', serif;
+  /* Elegant font for titles */
+  --font-body: 'Lato', sans-serif;
+  /* Clean font for text */
+}
+
+body {
+  background: #fdfdfd;
+  color: #222;
+  line-height: 1.6;
+  font-family: var(--font-body);
+  /* Apply body font */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* --- LAYOUT UTILITIES --- */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 80px 0;
+}
+
+/* Apply Heading Font */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-heading);
+  margin-bottom: 15px;
+  color: #1a1a1a;
+}
+
+h2 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 700;
+}
+
+p {
+  margin-bottom: 15px;
+  font-size: 1.05rem;
+}
+
+.btn {
+  display: inline-block;
+  background: #1a1a1a;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 2px;
+  /* Sharper corners for a cleaner look */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  border: none;
+}
+
+.btn:hover {
+  background: #444;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.btn-outline:hover {
+  background: #fff;
+  color: #1a1a1a;
+}
+
+/* --- TOP BAR --- */
+.top-bar {
+  padding: 20px 0;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.top-bar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #1a1a1a;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* 4. MOBILE CALL BUTTON (Hidden on Desktop) */
+.mobile-call-btn {
+  display: none;
+  background-color: #d4af37;
+  /* Gold color to stand out */
+  color: #000;
+  padding: 8px 15px;
+  font-size: 0.8rem;
+}
+
+/* --- HERO --- */
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1558171813-4c088753af8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  /* Nice tailoring background */
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  padding: 120px 0 100px;
+  text-align: center;
+}
+
+.hero .container {
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  font-weight: 300;
+  color: #f0f0f0;
+}
+
+/* --- INTRO / ABOUT --- */
+.intro {
+  background: #fafafa;
+  text-align: center;
+}
+
+.intro .container {
+  max-width: 800px;
+}
+
+/* --- SERVICES --- */
+.services .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.service-card {
+  flex: 1 1 250px;
+  border: 1px solid #eaeaea;
+  padding: 40px 30px;
+  border-radius: 0;
+  /* Sharp edges for elegance */
+  background: #fff;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.service-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-color: #1a1a1a;
+}
+
+.service-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* --- WHY CHOOSE US --- */
+.why-us {
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.why-us h2 {
+  color: #fff;
+}
+
+.why-us .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.benefit {
+  flex: 1 1 220px;
+  text-align: center;
+}
+
+.benefit h3 {
+  font-size: 1.2rem;
+  color: #d4af37;
+  /* Gold accent color */
+}
+
+/* --- GALLERY (Updated for IMG tags) --- */
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.gallery-item {
+  flex: 1 1 250px;
+  height: 300px;
+  background: #eee;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Ensures image fills the box perfectly */
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+.gallery-item:hover img {
+  background: rgba(0, 0, 0, 0);
+}
+
+/* --- FAQ SECTION --- */
+.faq {
+  background: #f9f9f9;
+}
+
+.faq details {
+  background: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #eee;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.faq details[open] {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-left: 4px solid #1a1a1a;
+}
+
+.faq summary {
+  font-weight: 700;
+  outline: none;
+  font-family: var(--font-heading);
+  list-style: none;
+  /* Hides default triangle in some browsers */
+  position: relative;
+  padding-right: 20px;
+}
+
+/* Custom indicator */
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  font-weight: bold;
+}
+
+.faq details[open] summary::after {
+  content: '-';
+}
+
+.faq p {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #555;
+  border-top: 1px solid #eee;
+  padding-top: 10px;
+}
+
+/* --- TESTIMONIALS --- */
+.testimonials {
+  background: #f9f9f9;
+}
+
+.testimonial-card {
+  max-width: 800px;
+  margin: 0 auto;
+  border-left: 4px solid #1a1a1a;
+  padding: 30px;
+  background: #fff;
+  font-style: italic;
+}
+
+.testimonial-card .author {
+  display: block;
+  margin-top: 20px;
+  font-style: normal;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: #555;
+}
+
+/* --- CONTACT / BOOKING --- */
+.contact .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.contact-info {
+  flex: 1 1 300px;
+}
+
+/* 3. GOOGLE MAP PLACEHOLDER */
+.map-container {
+  width: 100%;
+  height: 250px;
+  background: #ddd;
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.booking-form {
+  flex: 1 1 300px;
+  border: 1px solid #ddd;
+  padding: 40px;
+  background: #fff;
+}
+
+.booking-form label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.booking-form input,
+.booking-form textarea,
+.booking-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}
+
+.booking-form input:focus,
+.booking-form textarea:focus {
+  outline: none;
+  border-color: #1a1a1a;
+}
+
+.booking-form button {
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+/* --- FOOTER --- */
+footer {
+  background: #111;
+  color: #888;
+  padding: 60px 0 20px;
+  font-size: 0.9rem;
+}
+
+footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  border-bottom: 1px solid #222;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+}
+
+.footer-col h4 {
+  color: #fff;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.footer-col ul {
+  list-style: none;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a:hover {
+  color: #fff;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  /* Show Call Button on Mobile */
+  .mobile-call-btn {
+    display: inline-block !important;
+  }
+
+  /* Hide Nav Links on Mobile to save space */
+  .nav-links {
+    display: none;
+  }
+
+  .top-bar .container {
+    flex-direction: row;
+    /* Changed from column to row for mobile header layout */
+    justify-content: space-between;
+  }
+
+  section {
+    padding: 50px 0;
+  }
+}
+
+/* --- WHATSAPP FLOATING BUTTON --- */
+.whatsapp-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.whatsapp-float:hover {
+  background-color: #128C7E;
+  /* Darker green on hover */
+}
+
+.whatsapp-icon {
+  width: 35px;
+  height: 35px;
+  fill: white;
+}
+
+/* Lightbox Styles */
+.lightbox {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}

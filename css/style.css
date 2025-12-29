@@ -9,26 +9,50 @@ html {
   scroll-behavior: smooth;
 }
 
-/* --- FONT VARIABLES --- */
+/* --- VARIABLES & DESIGN TOKENS --- */
 :root {
+  /* Colors */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f9f9f9;
+  --color-text: #222222;
+  --color-primary: #1a1a1a;
+  --color-secondary: #555555;
+  --color-accent: #d4af37;
+  --color-border: #eaeaea;
+
+  /* Feature Colors */
+  --color-whatsapp-bg: #25d366;
+  --color-whatsapp-bg-hover: #128c7e;
+  --color-call-bg: #007bff;
+  --color-call-bg-hover: #0056b3;
+
+  /* Fonts */
   --font-heading: 'Playfair Display', serif;
-  /* Elegant font for titles */
   --font-body: 'Lato', sans-serif;
-  /* Clean font for text */
 }
 
 body {
-  background: #fdfdfd;
-  color: #222;
+  background: var(--color-bg);
+  color: var(--color-text);
   line-height: 1.6;
   font-family: var(--font-body);
-  /* Apply body font */
 }
 
 a {
   text-decoration: none;
   color: inherit;
   transition: 0.3s ease;
+}
+
+/* ACCESSIBILITY: Focus States */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }
 
 img {
@@ -47,14 +71,14 @@ section {
   padding: 80px 0;
 }
 
-/* Apply Heading Font */
+/* Typography */
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--font-heading);
   margin-bottom: 15px;
-  color: #1a1a1a;
+  color: var(--color-primary);
 }
 
 h2 {
@@ -69,13 +93,13 @@ p {
   font-size: 1.05rem;
 }
 
+/* Buttons */
 .btn {
   display: inline-block;
-  background: #1a1a1a;
+  background: var(--color-primary);
   color: #fff;
   padding: 12px 30px;
   border-radius: 2px;
-  /* Sharper corners for a cleaner look */
   font-weight: 700;
   letter-spacing: 0.5px;
   text-transform: uppercase;
@@ -83,6 +107,7 @@ p {
   font-family: var(--font-body);
   cursor: pointer;
   border: none;
+  transition: all 0.3s ease;
 }
 
 .btn:hover {
@@ -98,7 +123,7 @@ p {
 
 .btn-outline:hover {
   background: #fff;
-  color: #1a1a1a;
+  color: var(--color-primary);
 }
 
 /* --- TOP BAR --- */
@@ -115,6 +140,8 @@ p {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  /* For mobile menu positioning */
 }
 
 .logo {
@@ -124,6 +151,7 @@ p {
   letter-spacing: 1px;
 }
 
+/* Navigation */
 .nav-links {
   display: flex;
   gap: 30px;
@@ -144,7 +172,7 @@ p {
   height: 2px;
   bottom: -5px;
   left: 0;
-  background-color: #1a1a1a;
+  background-color: var(--color-primary);
   transition: width 0.3s;
 }
 
@@ -152,11 +180,35 @@ p {
   width: 100%;
 }
 
-/* 4. MOBILE CALL BUTTON (Hidden on Desktop) */
+.nav-links a.active {
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* Hamburger Menu Toggle */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Mobile Call Button */
 .mobile-call-btn {
   display: none;
-  background-color: #d4af37;
-  /* Gold color to stand out */
+  background-color: var(--color-accent);
   color: #000;
   padding: 8px 15px;
   font-size: 0.8rem;
@@ -165,7 +217,6 @@ p {
 /* --- HERO --- */
 .hero {
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1558171813-4c088753af8f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-  /* Nice tailoring background */
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -191,16 +242,6 @@ p {
   color: #f0f0f0;
 }
 
-/* --- INTRO / ABOUT --- */
-.intro {
-  background: #fafafa;
-  text-align: center;
-}
-
-.intro .container {
-  max-width: 800px;
-}
-
 /* --- SERVICES --- */
 .services .container {
   display: flex;
@@ -210,10 +251,9 @@ p {
 
 .service-card {
   flex: 1 1 250px;
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--color-border);
   padding: 40px 30px;
   border-radius: 0;
-  /* Sharp edges for elegance */
   background: #fff;
   text-align: center;
   transition: 0.3s;
@@ -221,7 +261,7 @@ p {
 
 .service-card:hover {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  border-color: #1a1a1a;
+  border-color: var(--color-primary);
 }
 
 .service-card h3 {
@@ -231,37 +271,10 @@ p {
 
 .service-card p {
   font-size: 0.95rem;
-  color: #555;
+  color: var(--color-secondary);
 }
 
-/* --- WHY CHOOSE US --- */
-.why-us {
-  background: #1a1a1a;
-  color: #fff;
-}
-
-.why-us h2 {
-  color: #fff;
-}
-
-.why-us .container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-}
-
-.benefit {
-  flex: 1 1 220px;
-  text-align: center;
-}
-
-.benefit h3 {
-  font-size: 1.2rem;
-  color: #d4af37;
-  /* Gold accent color */
-}
-
-/* --- GALLERY (Updated for IMG tags) --- */
+/* --- GALLERY --- */
 .gallery-grid {
   display: flex;
   flex-wrap: wrap;
@@ -276,7 +289,6 @@ p {
   position: relative;
 }
 
-/* Ensures image fills the box perfectly */
 .gallery-item img {
   width: 100%;
   height: 100%;
@@ -286,26 +298,55 @@ p {
 }
 
 .gallery-item:hover img {
-  background: rgba(0, 0, 0, 0);
+  transform: scale(1.05);
+  /* Slight zoom effect */
 }
 
-/* --- FAQ SECTION --- */
+/* --- TESTIMONIALS --- */
+.testimonials {
+  background: var(--color-bg-alt);
+}
+
+.testimonial-card {
+  flex: 1 1 300px;
+  max-width: 400px;
+  border-left: 4px solid var(--color-primary);
+  padding: 30px;
+  background: #fff;
+  font-style: italic;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-card p {
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+.testimonial-card .author {
+  display: block;
+  font-style: normal;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  color: var(--color-secondary);
+}
+
+/* --- FAQ --- */
 .faq {
-  background: #f9f9f9;
+  background: #fff;
 }
 
 .faq details {
   background: #fff;
   padding: 15px;
   margin-bottom: 10px;
-  border: 1px solid #eee;
+  border: 1px solid var(--color-border);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .faq details[open] {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border-left: 4px solid #1a1a1a;
+  border-left: 4px solid var(--color-primary);
 }
 
 .faq summary {
@@ -313,12 +354,10 @@ p {
   outline: none;
   font-family: var(--font-heading);
   list-style: none;
-  /* Hides default triangle in some browsers */
   position: relative;
   padding-right: 20px;
 }
 
-/* Custom indicator */
 .faq summary::-webkit-details-marker {
   display: none;
 }
@@ -337,35 +376,12 @@ p {
 .faq p {
   margin-top: 10px;
   font-size: 0.95rem;
-  color: #555;
-  border-top: 1px solid #eee;
+  color: var(--color-secondary);
+  border-top: 1px solid var(--color-border);
   padding-top: 10px;
 }
 
-/* --- TESTIMONIALS --- */
-.testimonials {
-  background: #f9f9f9;
-}
-
-.testimonial-card {
-  max-width: 800px;
-  margin: 0 auto;
-  border-left: 4px solid #1a1a1a;
-  padding: 30px;
-  background: #fff;
-  font-style: italic;
-}
-
-.testimonial-card .author {
-  display: block;
-  margin-top: 20px;
-  font-style: normal;
-  font-weight: 700;
-  font-family: var(--font-heading);
-  color: #555;
-}
-
-/* --- CONTACT / BOOKING --- */
+/* --- CONTACT --- */
 .contact .container {
   display: flex;
   flex-wrap: wrap;
@@ -376,7 +392,6 @@ p {
   flex: 1 1 300px;
 }
 
-/* 3. GOOGLE MAP PLACEHOLDER */
 .map-container {
   width: 100%;
   height: 250px;
@@ -385,12 +400,11 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #666;
 }
 
 .booking-form {
   flex: 1 1 300px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border);
   padding: 40px;
   background: #fff;
 }
@@ -416,15 +430,38 @@ p {
 }
 
 .booking-form input:focus,
-.booking-form textarea:focus {
+.booking-form textarea:focus,
+.booking-form select:focus {
   outline: none;
-  border-color: #1a1a1a;
+  border-color: var(--color-primary);
 }
 
 .booking-form button {
   width: 100%;
-  border: none;
-  cursor: pointer;
+}
+
+/* --- TOAST NOTIFICATION --- */
+.toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 2000;
+  left: 50%;
+  bottom: 30px;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s, bottom 0.3s;
+}
+
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+  bottom: 50px;
 }
 
 /* --- FOOTER --- */
@@ -463,41 +500,14 @@ footer .container {
   color: #fff;
 }
 
-/* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  /* Show Call Button on Mobile */
-  .mobile-call-btn {
-    display: inline-block !important;
-  }
-
-  /* Hide Nav Links on Mobile to save space */
-  .nav-links {
-    display: none;
-  }
-
-  .top-bar .container {
-    flex-direction: row;
-    /* Changed from column to row for mobile header layout */
-    justify-content: space-between;
-  }
-
-  section {
-    padding: 50px 0;
-  }
-}
-
-/* --- WHATSAPP FLOATING BUTTON --- */
+/* --- FLOATING BUTTONS --- */
 .whatsapp-float {
   position: fixed;
   width: 60px;
   height: 60px;
   bottom: 40px;
   right: 40px;
-  background-color: #25d366;
+  background-color: var(--color-whatsapp-bg);
   color: #FFF;
   border-radius: 50px;
   text-align: center;
@@ -507,11 +517,11 @@ footer .container {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background-color 0.3s;
 }
 
 .whatsapp-float:hover {
-  background-color: #128C7E;
-  /* Darker green on hover */
+  background-color: var(--color-whatsapp-bg-hover);
 }
 
 .whatsapp-icon {
@@ -520,15 +530,13 @@ footer .container {
   fill: white;
 }
 
-/* --- CALL FLOATING BUTTON --- */
 .call-float {
   position: fixed;
   width: 60px;
   height: 60px;
   bottom: 110px;
-  /* Stacked above WhatsApp */
   right: 40px;
-  background-color: #007bff;
+  background-color: var(--color-call-bg);
   color: #FFF;
   border-radius: 50px;
   text-align: center;
@@ -542,7 +550,7 @@ footer .container {
 }
 
 .call-float:hover {
-  background-color: #0056b3;
+  background-color: var(--color-call-bg-hover);
 }
 
 .call-icon {
@@ -551,7 +559,7 @@ footer .container {
   fill: white;
 }
 
-/* Lightbox Styles */
+/* Lightbox */
 .lightbox {
   display: none;
   position: fixed;
@@ -579,4 +587,58 @@ footer .container {
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  /* Show Toggle */
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  /* Mobile Nav Drawer */
+  .nav-links {
+    display: none;
+    /* Hidden by default */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    /* Below header */
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid #eee;
+    gap: 15px;
+  }
+
+  .nav-links.active {
+    display: flex;
+    /* Show when active */
+  }
+
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-links a::after {
+    display: none;
+    /* No hover underline on mobile */
+  }
+
+  .mobile-call-btn {
+    display: inline-block !important;
+    /* Force show */
+  }
+
+  section {
+    padding: 50px 0;
+  }
 }

@@ -97,10 +97,16 @@
 
     <!-- HERO -->
     <section class="hero">
-        <div class="container">
+        <div class="container" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="stitch-border" style="margin-bottom: 40px;">
+                <span style="font-family: var(--font-body); letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; padding: 10px 20px; display: block;">Masterful Tailoring</span>
+            </div>
             <h1>Elegance in Every Stitch</h1>
-            <p>Bespoke tailoring and expert alterations designed to fit your lifestyle.</p>
-            <a href="#contact" class="btn">Book Appointment</a>
+            <p>Bespoke tailoring and expert alterations designed for the modern gentleman.</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="#contact" class="btn">Book Personal Fitting</a>
+                <a href="#services" class="btn btn-secondary" style="background: white; border-color: white;">View Services</a>
+            </div>
         </div>
     </section>
 
@@ -108,32 +114,42 @@
     <section class="services" id="services">
         <div class="container">
             <h2>Our Services</h2>
-            <div class="service-card">
-                <h3>Bespoke Suits</h3>
-                <p>Handcrafted suits made from the finest fabrics.</p>
+            <div class="section-divider">
+                <span>The Art of Bespoke</span>
             </div>
-            <div class="service-card">
-                <h3>Wedding Attire</h3>
-                <p>Custom dresses and tuxedos for your special day.</p>
-            </div>
-            <div class="service-card">
-                <h3>Alterations</h3>
-                <p>Resizing, hemming, and repairs for all garments.</p>
-            </div>
-            <div class="service-card">
-                <h3>Restyling</h3>
-                <p>Update old clothes with modern repairs and adjustments.</p>
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                <div class="service-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px; color: var(--color-accent);">✂️</div>
+                    <h3>Bespoke Suits</h3>
+                    <p>Handcrafted suits made from the world's finest wools and silks, tailored precisely to your silhouette.</p>
+                </div>
+                <div class="service-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px; color: var(--color-accent);">👔</div>
+                    <h3>Wedding Attire</h3>
+                    <p>Exceptional custom tuxedos and morning coats for life's most significant celebrations.</p>
+                </div>
+                <div class="service-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px; color: var(--color-accent);">🧵</div>
+                    <h3>Expert Alterations</h3>
+                    <p>Precise adjustments that breathe new life into your current wardrobe with masterful skill.</p>
+                </div>
+                <div class="service-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 20px; color: var(--color-accent);">🧥</div>
+                    <h3>Garment Restyling</h3>
+                    <p>Modernizing vintage or classic pieces with contemporary cuts while preserving heritage quality.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- GALLERY -->
-    <!-- 2. Updated to use <img> tags so you can add alt text for Google -->
     <section class="gallery" id="gallery">
         <div class="container">
             <h2>Recent Masterpieces</h2>
+            <div class="section-divider">
+                <span>Crafted with Precision</span>
+            </div>
             <div class="gallery-grid">
-                <!-- REPLACE src WITH YOUR IMAGE FILES -->
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80"
                         alt="Grey bespoke suit tailored for a wedding" loading="lazy">

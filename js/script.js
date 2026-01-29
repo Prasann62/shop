@@ -23,7 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  /* --- 2. DEBOUNCED SCROLL SPY --- */
+  /* --- 2. HEADER SCROLL EFFECT --- */
+  const header = document.querySelector('.top-bar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+
+  /* --- 3. DEBOUNCED SCROLL SPY --- */
   const sections = document.querySelectorAll('section');
 
   function debounce(func, wait = 100) {

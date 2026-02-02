@@ -89,6 +89,47 @@
         .animate-fade-in {
             animation: fadeIn 0.8s ease-out forwards;
         }
+
+        /* Scroll Reveal Styles */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-left.active,
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .parallax-bg {
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+        }
+
+        .header-scrolled {
+            padding-top: 0.5rem !important;
+            padding-bottom: 0.5rem !important;
+            background: rgba(26, 26, 26, 0.95);
+        }
     </style>
 </head>
 
@@ -130,8 +171,9 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="assets/hero.jpg" alt="Master Tailor marking fabric with chalk" class="w-full h-full object-cover">
+        <div class="absolute inset-0 z-0 overflow-hidden">
+            <img src="assets/hero.jpg" alt="Master Tailor marking fabric with chalk"
+                class="w-full h-full object-cover parallax-bg" id="heroImg">
             <div class="absolute inset-0 hero-gradient"></div>
         </div>
 
@@ -171,7 +213,7 @@
     <!-- Services Grid -->
     <section id="services" class="py-24 bg-primary text-white">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-20">
+            <div class="text-center mb-20 reveal">
                 <h2 class="font-heading text-4xl md:text-5xl mb-4 font-bold">The Art of Bespoke</h2>
                 <div class="w-24 h-1 bg-accent mx-auto"></div>
                 <p class="mt-6 text-white/60 max-w-xl mx-auto italic text-lg opacity-80 font-medium">
@@ -180,9 +222,8 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Service 1 -->
-                <div
-                    class="group bg-default-800/30 p-12 text-center border border-white/5 hover:border-accent transition-all duration-500 transform hover:-translate-y-2">
+                <div class="group bg-default-800/30 p-12 text-center border border-white/5 hover:border-accent transition-all duration-500 transform hover:-translate-y-2 reveal"
+                    style="transition-delay: 0.1s;">
                     <div
                         class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-8 border-2 border-accent/20 group-hover:border-accent transition-colors shadow-2xl">
                         <img src="assets/Bespoke Suits.jpeg" alt="Tailor measuring fine fabric with a tape measure"
@@ -193,9 +234,8 @@
                         measurements with premium fabrics.</p>
                 </div>
 
-                <!-- Service 2 -->
-                <div
-                    class="group bg-default-800/30 p-12 text-center border border-white/5 hover:border-accent transition-all duration-500 transform hover:-translate-y-2">
+                <div class="group bg-default-800/30 p-12 text-center border border-white/5 hover:border-accent transition-all duration-500 transform hover:-translate-y-2 reveal"
+                    style="transition-delay: 0.2s;">
                     <div
                         class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-8 border-2 border-accent/20 group-hover:border-accent transition-colors shadow-2xl">
                         <img src="assets/Wedding Attire.jpeg" alt="Formal Wedding Tuxedo Detail"
@@ -206,9 +246,8 @@
                         life's most significant days.</p>
                 </div>
 
-                <!-- Service 3 -->
-                <div
-                    class="group bg-default-800/30 p-12 text-center border border-white/5 hover:border-accent transition-all duration-500 transform hover:-translate-y-2">
+                <div class="group bg-default-800/30 p-12 text-center border border-white/5 hover:border-accent transition-all duration-500 transform hover:-translate-y-2 reveal"
+                    style="transition-delay: 0.3s;">
                     <div
                         class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-8 border-2 border-accent/20 group-hover:border-accent transition-colors shadow-2xl">
                         <img src="assets/Expert Alterations.jpeg" alt="Master tailor performing intricate hand-sewing"
@@ -219,9 +258,8 @@
                         your existing wardrobe.</p>
                 </div>
 
-                <!-- Service 4 -->
-                <div
-                    class="group bg-default-800/30 p-12 text-center border border-accent/40 hover:border-accent transition-all duration-500 transform hover:-translate-y-2">
+                <div class="group bg-default-800/30 p-12 text-center border border-accent/40 hover:border-accent transition-all duration-500 transform hover:-translate-y-2 reveal"
+                    style="transition-delay: 0.4s;">
                     <div
                         class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-8 border-2 border-accent/60 group-hover:border-accent transition-colors shadow-2xl">
                         <img src="assets/Garment Restyling.jpeg" alt="Professional tailor shears and measuring tools"
@@ -239,7 +277,7 @@
     <section id="about" class="py-24 bg-primary text-white overflow-hidden border-t border-white/5">
         <div class="container mx-auto px-6">
             <div class="flex flex-col lg:flex-row items-center gap-16">
-                <div class="lg:w-1/2 relative">
+                <div class="lg:w-1/2 relative reveal-left">
                     <div class="stitch-border p-2 inline-block">
                         <img src="assets/about-workshop.jpg" alt="Traditional Bespoke Tailoring Workshop"
                             class="shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
@@ -250,7 +288,7 @@
                         <p class="text-sm tracking-[2px] uppercase font-bold">Years of Pure Craftsmanship</p>
                     </div>
                 </div>
-                <div class="lg:w-1/2">
+                <div class="lg:w-1/2 reveal-right">
                     <span class="text-accent tracking-[4px] uppercase font-bold mb-4 block">Our Story</span>
                     <h2 class="font-heading text-4xl md:text-5xl mb-8 leading-tight text-white">We Provide The <br>
                         <span class="text-accent underline decoration-1 underline-offset-8 italic">Highest
@@ -279,7 +317,7 @@
     <section id="gallery" class="py-24 bg-primary text-white">
         <div class="container mx-auto px-6">
             <div class="flex justify-between items-end mb-16">
-                <div>
+                <div class="reveal">
                     <h2 class="font-heading text-4xl font-bold">Recent Masterpieces</h2>
                     <p class="text-accent tracking-[2px] uppercase text-xs mt-2 font-bold">A Glimpse into our Workshop
                     </p>
@@ -290,34 +328,40 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="group relative overflow-hidden aspect-[4/5] bg-default-800">
-                    <img src="assets/gallery-suit.jpg" alt="Emerald Bespoke Suit"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-                    <div
-                        class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span
-                            class="text-white tracking-[4px] uppercase text-xs font-bold border border-white/40 px-6 py-3">View
-                            Details</span>
+                <div class="reveal" style="transition-delay: 0.1s;">
+                    <div class="group relative overflow-hidden aspect-[4/5] bg-default-800">
+                        <img src="assets/gallery-suit.jpg" alt="Emerald Bespoke Suit"
+                            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span
+                                class="text-white tracking-[4px] uppercase text-xs font-bold border border-white/40 px-6 py-3">View
+                                Details</span>
+                        </div>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden aspect-[4/5] bg-default-800 md:translate-y-12">
-                    <img src="assets/gallery-finished.jpg" alt="Finished Bespoke Masterpiece"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-                    <div
-                        class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span
-                            class="text-white tracking-[4px] uppercase text-xs font-bold border border-white/40 px-6 py-3">View
-                            Details</span>
+                <div class="reveal" style="transition-delay: 0.3s;">
+                    <div class="group relative overflow-hidden aspect-[4/5] bg-default-800 md:translate-y-12">
+                        <img src="assets/gallery-finished.jpg" alt="Finished Bespoke Masterpiece"
+                            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span
+                                class="text-white tracking-[4px] uppercase text-xs font-bold border border-white/40 px-6 py-3">View
+                                Details</span>
+                        </div>
                     </div>
                 </div>
-                <div class="group relative overflow-hidden aspect-[4/5] bg-default-800">
-                    <img src="assets/best work 3.jpeg" alt="Macro detail of artisan needle and thread work"
-                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-                    <div
-                        class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span
-                            class="text-white tracking-[4px] uppercase text-xs font-bold border border-white/40 px-6 py-3">View
-                            Details</span>
+                <div class="reveal" style="transition-delay: 0.5s;">
+                    <div class="group relative overflow-hidden aspect-[4/5] bg-default-800">
+                        <img src="assets/best work 3.jpeg" alt="Macro detail of artisan needle and thread work"
+                            class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                        <div
+                            class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span
+                                class="text-white tracking-[4px] uppercase text-xs font-bold border border-white/40 px-6 py-3">View
+                                Details</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -366,6 +410,16 @@
                             </div>
                             <div>
                                 <h4 class="font-bold tracking-[2px] uppercase text-xs mb-2 text-accent">Appointments
+                                </h4>
+                                <p class="text-lg text-white">+91 90476 88178</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-6">
+                            <div class="bg-default-800/50 p-4 rounded-full">
+                                <i data-lucide="message-circle" class="w-6 h-6 text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold tracking-[2px] uppercase text-xs mb-2 text-accent">WhatsApp
                                 </h4>
                                 <p class="text-lg text-white">+91 90476 88178</p>
                             </div>
@@ -534,6 +588,65 @@
     </div>
 
     <!-- INTERACTIVITY SCRIPT MOVED TO JS/SCRIPT.JS -->
+    <script>
+        // Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+                setTimeout(() => mobileMenu.style.opacity = '1', 10);
+            } else {
+                mobileMenu.style.opacity = '0';
+                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+            }
+        }
+
+        menuBtn.addEventListener('click', toggleMenu);
+        closeMenu.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
+
+        // Scroll Effects
+        const header = document.querySelector('header');
+        const heroImg = document.getElementById('heroImg');
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+
+        function handleScroll() {
+            const scrollY = window.scrollY;
+
+            // Header Effect
+            if (scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+
+            // Hero Parallax
+            if (heroImg) {
+                const speed = 0.5;
+                heroImg.style.transform = `translateY(${scrollY * speed}px) scale(${1 + scrollY * 0.0005})`;
+            }
+
+            // Reveal on Scroll
+            reveals.forEach(el => {
+                const revealTop = el.getBoundingClientRect().top;
+                const revealPoint = window.innerHeight * 0.8;
+
+                if (revealTop < revealPoint) {
+                    el.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('load', handleScroll); // Initial check
+    </script>
 </body>
 
 </html>

@@ -1,158 +1,101 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-  /* --- 1. MOBILE MENU TOGGLE --- */
-  const menuToggle = document.querySelector('.mobile-menu-toggle');
-  const navLinksContainer = document.querySelector('.nav-links');
-  const navLinks = document.querySelectorAll('.nav-links a');
-
-  if (menuToggle && navLinksContainer) {
-    // Toggle Menu
-    menuToggle.addEventListener('click', () => {
-      navLinksContainer.classList.toggle('active');
-
-      // Toggle hamburger animation state if you wanted (optional)
-      // e.g., menuToggle.classList.toggle('open');
-    });
-
-    // Close menu when a link is clicked
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinksContainer.classList.remove('active');
-      });
-    });
+  // 1. Initialize Lucide Icons
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
   }
 
-
-  /* --- 2. HEADER SCROLL EFFECT --- */
-  const header = document.querySelector('.top-bar');
-  window.addEventListener('scroll', () => {
+  // 2. Header Scroll Effect
+  const header = document.querySelector('header');
+  const handleHeaderScroll = () => {
     if (window.scrollY > 50) {
-      header.classList.add('scrolled');
+      header.classList.add('shadow-xl', 'py-2');
+      header.classList.remove('py-4');
     } else {
-      header.classList.remove('scrolled');
+      header.classList.remove('shadow-xl', 'py-2');
+      header.classList.add('py-4');
     }
-  });
+  };
+  window.addEventListener('scroll', handleHeaderScroll);
 
+  // 3. Mobile Menu Logic
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenu = document.getElementById('closeMenu');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
 
-  /* --- 3. DEBOUNCED SCROLL SPY --- */
-  const sections = document.querySelectorAll('section');
-
-  function debounce(func, wait = 100) {
-    let timeout;
-    return function (...args) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-  }
-
-  const handleScroll = () => {
-    let current = '';
-
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      // Adjustment for sticky header (approx 100px)
-      if (window.scrollY >= (sectionTop - 150)) {
-        current = section.getAttribute('id');
-      }
+  if (menuBtn && closeMenu && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+      document.body.style.overflow = 'hidden'; // Prevent scroll
+      setTimeout(() => {
+        mobileMenu.classList.add('opacity-100');
+      }, 10);
     });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href').includes(current)) {
-        link.classList.add('active');
+    const hideMenu = () => {
+      mobileMenu.classList.remove('opacity-100');
+      document.body.style.overflow = ''; // Restore scroll
+      setTimeout(() => {
+        mobileMenu.classList.add('hidden');
+      }, 300);
+    };
+
+    closeMenu.addEventListener('click', hideMenu);
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', hideMenu);
+    });
+  }
+
+  // 4. Reveal on Scroll Animation
+  const revealElements = document.querySelectorAll('section, .reveal');
+  const revealOnScroll = () => {
+    const triggerBottom = window.innerHeight * 0.9;
+    revealElements.forEach(el => {
+      const elTop = el.getBoundingClientRect().top;
+      if (elTop < triggerBottom) {
+        el.classList.add('active');
       }
     });
   };
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll(); // Initial check
 
-  window.addEventListener('scroll', debounce(handleScroll, 50));
+  // 5. Smooth Scroll for all anchors
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
 
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        const headerOffset = 80;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-  /* --- 3. TOAST NOTIFICATION --- */
-  const toast = document.getElementById('toast');
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
 
-  function showToast(message) {
-    if (!toast) return;
+  // 6. Testimonial Slider (Simple Fade)
+  const testimonials = document.querySelectorAll('#testimonialSlider > div > div');
+  let currentTestimonial = 0;
 
-    // Update message if passed
-    if (message) toast.textContent = message;
-
-    toast.classList.add('show');
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 3500);
+  if (testimonials.length > 1) {
+    setInterval(() => {
+      testimonials[currentTestimonial].classList.add('opacity-0');
+      setTimeout(() => {
+        testimonials[currentTestimonial].classList.add('hidden');
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        testimonials[currentTestimonial].classList.remove('hidden');
+        setTimeout(() => {
+          testimonials[currentTestimonial].classList.remove('opacity-0');
+        }, 50);
+      }, 500);
+    }, 6000);
   }
-
-
-  /* --- 4. FORM VALIDATION & SUBMIT --- */
-  const form = document.querySelector('form');
-
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      // Get Values
-      const name = form.querySelector('input[name="name"]')?.value.trim();
-      const email = form.querySelector('input[name="email"]')?.value.trim();
-      const message = form.querySelector('textarea[name="message"]')?.value.trim();
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      let valid = true;
-      let errorMessage = '';
-
-      if (!name) {
-        errorMessage = 'Please enter your full name.';
-        valid = false;
-      } else if (!email || !emailPattern.test(email)) {
-        errorMessage = 'Please enter a valid email address.';
-        valid = false;
-      } else if (!message) {
-        errorMessage = 'Please enter a message.';
-        valid = false;
-      }
-
-      if (!valid) {
-        e.preventDefault();
-        alert(errorMessage);
-      }
-      // If valid, allow standard submission to Netlify
-    });
-  }
-
-
-  /* --- 5. LIGHTBOX FUNCTIONALITY --- */
-  const lightbox = document.getElementById("myLightbox");
-  const lightboxImg = document.getElementById("img01");
-  const closeBtn = document.querySelector(".close-lightbox");
-
-  if (lightbox && lightboxImg && closeBtn) {
-    // Open
-    document.querySelectorAll('.gallery-item img').forEach(img => {
-      img.addEventListener('click', (e) => {
-        lightbox.style.display = "block";
-        lightboxImg.src = e.target.src;
-        // Add alt text to lightbox image for accessibility
-        lightboxImg.alt = e.target.alt;
-      });
-    });
-
-    // Close functions
-    const closeLightbox = () => {
-      lightbox.style.display = "none";
-    };
-
-    closeBtn.addEventListener('click', closeLightbox);
-
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) {
-        closeLightbox();
-      }
-    });
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === "Escape" && lightbox.style.display === "block") {
-        closeLightbox();
-      }
-    });
-  }
-
 });

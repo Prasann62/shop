@@ -1,346 +1,539 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8" />
-    <title>EasyFit Tailors – Custom Suits & Alterations in Mumbai</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EasyFit Tailors – Bespoke Elegance & Masterful Alterations</title>
 
-    <!-- 8. META DESCRIPTION FOR GOOGLE -->
+    <!-- SEO Meta Tags -->
     <meta name="description"
-        content="EasyFit Tailors: expert tailoring and custom suits in Mumbai. Professional alterations, wedding dress fittings, and clothing repairs. Visit us today.">
+        content="EasyFit Tailors: Premier bespoke tailoring and expert alterations. Elevate your style with handcrafted suits and precise craftsmanship. Visit our luxury workshop today." />
     <meta name="keywords"
-        content="tailor, custom suits, alterations, dress maker, Mumbai, wedding fittings, clothing repairs">
+        content="tailor, bespoke suits, custom tailoring, alterations, luxury fashion, wedding attire, EasyFit Tailors" />
 
-    <!-- OPEN GRAPH -->
-    <meta property="og:title" content="EasyFit Tailors – Custom Suits & Alterations in Mumbai">
-    <meta property="og:description" content="Expert tailoring, bespoke suits, and professional alterations in Mumbai.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://github.com/Prasann62/shop">
-    <meta property="og:image"
-        content="https://images.unsplash.com/photo-1558171813-4c088753af8f?auto=format&fit=crop&w=1200&q=80">
-
-    <!-- SCHEMA MARKUP FOR LOCAL BUSINESS -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Tailor",
-      "name": "EasyFit Tailors",
-      "image": "https://images.unsplash.com/photo-1558171813-4c088753af8f?auto=format&fit=crop&w=800&q=80",
-      "telephone": "+91-90476-88178",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "123 Fashion Avenue, Suite 101",
-        "addressLocality": "Mumbai",
-        "addressRegion": "MH",
-        "postalCode": "400001",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 19.0760,
-        "longitude": 72.8777
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday"
-        ],
-        "opens": "09:00",
-        "closes": "19:00"
-      },
-      "priceRange": "$$"
-    }
-    </script>
-
-    <!-- GOOGLE FONTS -->
+    <!-- External Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
 
-    <!-- EXTERNAL CSS -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a1a1a',
+                        secondary: '#4a4a4a',
+                        accent: '#c5a02e',
+                        'accent-dark': '#a68626',
+                        'default-100': '#f5f5f5',
+                        'default-200': '#e5e5e5',
+                        'default-500': '#737373',
+                        'default-800': '#262626',
+                    },
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Lato', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .glass-header {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+        }
+
+        .stitch-border {
+            border: 1px dashed rgba(197, 160, 46, 0.5);
+            position: relative;
+        }
+
+        .stitch-border::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 1px solid rgba(197, 160, 46, 0.3);
+            pointer-events: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+    </style>
 </head>
 
-<body>
+<body class="bg-white text-default-800 font-body antialiased">
 
-    <!-- TOP BAR -->
-    <header class="top-bar">
-        <div class="container">
-            <div class="logo">EasyFit Tailors</div>
-
-            <!-- Mobile Menu Toggle -->
-            <button class="mobile-menu-toggle" aria-label="Toggle navigation">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-            </button>
+    <!-- Header -->
+    <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300 glass-header border-b border-default-200">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex flex-col">
+                <span class="font-heading text-2xl font-bold tracking-widest text-white uppercase">EasyFit
+                    Tailors</span>
+                <span class="text-[10px] tracking-[4px] text-accent uppercase font-bold -mt-1">Est. 1995</span>
+            </a>
 
             <!-- Desktop Nav -->
-            <nav class="nav-links">
-                <a href="#services">Services</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#contact">Contact</a>
+            <nav
+                class="hidden md:flex items-center space-x-10 text-sm font-bold uppercase tracking-widest text-white/70">
+                <a href="#home" class="hover:text-accent transition-colors">Home</a>
+                <a href="#services" class="hover:text-accent transition-colors">Services</a>
+                <a href="#about" class="hover:text-accent transition-colors">About</a>
+                <a href="#gallery" class="hover:text-accent transition-colors">Masterpieces</a>
+                <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
             </nav>
 
-            <!-- 4. MOBILE CALL BUTTON -->
-            <a href="tel:+919047688178" class="btn mobile-call-btn">Call Now</a>
+            <div class="flex items-center space-x-6">
+
+                <a href="#contact"
+                    class="bg-accent text-white px-8 py-3 text-xs font-bold uppercase tracking-[2px] hover:bg-accent-dark hover:text-white transition-all transform hover:-translate-y-1 shadow-lg">
+                    Book Fitting
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden text-white" id="menuBtn">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="container" style="display: flex; flex-direction: column; align-items: center;">
-            <div class="stitch-border" style="margin-bottom: 40px;">
-                <span style="font-family: var(--font-body); letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; padding: 10px 20px; display: block;">Masterful Tailoring</span>
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="assets/hero.jpg" alt="Master Tailor marking fabric with chalk" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10 text-center text-white">
+            <div class="inline-block stitch-border px-8 py-2 mb-8 animate-fade-in">
+                <span class="text-sm tracking-[6px] uppercase font-bold text-accent">Masterful Craftsmanship</span>
             </div>
-            <h1>Elegance in Every Stitch</h1>
-            <p>Bespoke tailoring and expert alterations designed for the modern gentleman.</p>
-            <div style="display: flex; gap: 20px;">
-                <a href="#contact" class="btn">Book Personal Fitting</a>
-                <a href="#services" class="btn btn-secondary" style="background: white; border-color: white;">View Services</a>
+            <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl mb-6 leading-tight animate-fade-in"
+                style="animation-delay: 0.2s;">
+                Elegance In Every <br> <span class="italic text-accent">Single Stitch</span>
+            </h1>
+            <p class="text-lg md:text-xl font-light tracking-wide max-w-2xl mx-auto mb-10 opacity-90 animate-fade-in"
+                style="animation-delay: 0.4s;">
+                Experience the pinnacle of bespoke tailoring. From perfectly fitted suits to expert alterations, we
+                define modern sophisticated style.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 animate-fade-in"
+                style="animation-delay: 0.6s;">
+                <a href="#contact"
+                    class="w-full sm:w-auto bg-accent hover:bg-white hover:text-primary text-white font-bold py-5 px-12 tracking-widest transition-all shadow-2xl">
+                    BOOK A RECENT FITTING
+                </a>
+                <a href="#services"
+                    class="w-full sm:w-auto border border-white hover:bg-white hover:text-primary text-white font-bold py-5 px-12 tracking-widest transition-all">
+                    EXPLORE SERVICES
+                </a>
             </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce flex flex-col items-center">
+            <span class="text-[10px] tracking-[4px] uppercase mb-2 text-white/60">Scroll</span>
+            <i data-lucide="chevron-down" class="text-accent w-5 h-5"></i>
         </div>
     </section>
 
-    <!-- SERVICES -->
-    <section class="services" id="services">
-        <div class="container">
-            <h2>Our Services</h2>
-            <div class="section-divider">
-                <span>The Art of Bespoke</span>
+    <!-- Services Grid -->
+    <section id="services" class="py-24 bg-primary text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="font-heading text-4xl md:text-5xl mb-4 font-bold">The Art of Bespoke</h2>
+                <div class="w-24 h-1 bg-accent mx-auto"></div>
+                <p class="mt-6 text-white/60 max-w-xl mx-auto italic text-lg opacity-80 font-medium">
+                    Fine tailoring isn't just a service; it's a centuries-old tradition we carry forward with modern
+                    precision.</p>
             </div>
-            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-                <div class="service-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 20px; color: var(--color-accent);">✂️</div>
-                    <h3>Bespoke Suits</h3>
-                    <p>Handcrafted suits made from the world's finest wools and silks, tailored precisely to your silhouette.</p>
-                </div>
-                <div class="service-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 20px; color: var(--color-accent);">👔</div>
-                    <h3>Wedding Attire</h3>
-                    <p>Exceptional custom tuxedos and morning coats for life's most significant celebrations.</p>
-                </div>
-                <div class="service-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 20px; color: var(--color-accent);">🧵</div>
-                    <h3>Expert Alterations</h3>
-                    <p>Precise adjustments that breathe new life into your current wardrobe with masterful skill.</p>
-                </div>
-                <div class="service-card">
-                    <div style="font-size: 2.5rem; margin-bottom: 20px; color: var(--color-accent);">🧥</div>
-                    <h3>Garment Restyling</h3>
-                    <p>Modernizing vintage or classic pieces with contemporary cuts while preserving heritage quality.</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- GALLERY -->
-    <section class="gallery" id="gallery">
-        <div class="container">
-            <h2>Recent Masterpieces</h2>
-            <div class="section-divider">
-                <span>Crafted with Precision</span>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80"
-                        alt="Grey bespoke suit tailored for a wedding" loading="lazy">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div
+                    class="group bg-default-800/30 p-12 text-center border border-white/5 hover:border-accent transition-all duration-500 transform hover:-translate-y-2">
+                    <div
+                        class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-8 border-2 border-accent/20 group-hover:border-accent transition-colors shadow-2xl">
+                        <img src="assets/service-bespoke.jpg" alt="Tailor measuring fine fabric with a tape measure"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-heading text-2xl mb-4">Bespoke Suits</h3>
+                    <p class="text-white/40 text-sm leading-relaxed">Handcrafted garments tailored to your exact
+                        measurements with premium fabrics.</p>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80"
-                        alt="Man in a blue jacket fitting session" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1593030761757-71bd90dbe3e4?auto=format&fit=crop&w=600&q=80"
-                        alt="Detailed sewing work on a dress" loading="lazy">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1550246140-511997b433d9?auto=format&fit=crop&w=600&q=80"
-                        alt="Tailor measuring fabric" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- FAQ SECTION -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <h2>Frequently Asked Questions</h2>
-
-            <!-- Question 1 -->
-            <details>
-                <summary>How long does a suit take to make?</summary>
-                <p>Typically, a bespoke suit takes 3 to 4 weeks. This includes multiple fittings to ensure the perfect
-                    fit.</p>
-            </details>
-
-            <!-- Question 2 -->
-            <details>
-                <summary>Do you offer rush services?</summary>
-                <p>Yes, we offer rush services for alterations and urgent repairs. Please call us to check availability.
-                </p>
-            </details>
-
-            <!-- Question 3 -->
-            <details>
-                <summary>What forms of payment do you accept?</summary>
-                <p>We accept Cash, Credit Cards (Visa, Mastercard), and Apple Pay.</p>
-            </details>
-        </div>
-    </section>
-
-    <!-- TESTIMONIALS (NEW) -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <h2>What Our Clients Say</h2>
-            <div class="testimonials-grid" style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
-                <div class="testimonial-card">
-                    <p>"Absolutely thrilled with my custom suit. The fit is perfect!"</p>
-                    <span class="author">- Rajesh K.</span>
+                <!-- Service 2 -->
+                <div
+                    class="group bg-default-800/30 p-12 text-center border border-white/5 hover:border-accent transition-all duration-500 transform hover:-translate-y-2">
+                    <div
+                        class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-8 border-2 border-accent/20 group-hover:border-accent transition-colors shadow-2xl">
+                        <img src="assets/service-wedding.jpg" alt="Formal Wedding Tuxedo Detail"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-heading text-2xl mb-4">Wedding Attire</h3>
+                    <p class="text-white/40 text-sm leading-relaxed">Exquisite custom tuxedos and morning coats for
+                        life's most significant days.</p>
                 </div>
-                <div class="testimonial-card">
-                    <p>"Saved my favorite dress with incredible invisible mending. Highly recommend."</p>
-                    <span class="author">- Priya S.</span>
+
+                <!-- Service 3 -->
+                <div
+                    class="group bg-default-800/30 p-12 text-center border border-white/5 hover:border-accent transition-all duration-500 transform hover:-translate-y-2">
+                    <div
+                        class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-8 border-2 border-accent/20 group-hover:border-accent transition-colors shadow-2xl">
+                        <img src="assets/service-alterations.jpg" alt="Master tailor performing intricate hand-sewing"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-heading text-2xl mb-4">Expert Alterations</h3>
+                    <p class="text-white/40 text-sm leading-relaxed">Precision adjustments to breathe new life into
+                        your existing wardrobe.</p>
                 </div>
-                <div class="testimonial-card">
-                    <p>"Professional, timely, and very skilled. Best tailor in Mumbai."</p>
-                    <span class="author">- Amit V.</span>
+
+                <!-- Service 4 -->
+                <div
+                    class="group bg-default-800/30 p-12 text-center border border-accent/40 hover:border-accent transition-all duration-500 transform hover:-translate-y-2">
+                    <div
+                        class="w-24 h-24 rounded-full overflow-hidden mx-auto mb-8 border-2 border-accent/60 group-hover:border-accent transition-colors shadow-2xl">
+                        <img src="assets/service-restyling.jpg" alt="Professional tailor shears and measuring tools"
+                            class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-heading text-2xl mb-4 text-accent">Garment Restyling</h3>
+                    <p class="text-white/40 text-sm leading-relaxed">Modernizing classic pieces with contemporary
+                        cuts and finishes.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="contact-info">
-                <h2>Visit Our Shop</h2>
-                <p>We are located in the heart of the city. Walk-ins are welcome, but appointments are preferred for
-                    custom fittings.</p>
-
-                <p><strong>Address:</strong><br />
-                    123 Fashion Avenue, Suite 101<br />
-                    Mumbai, MH 400001</p>
-
-                <p><strong>Phone:</strong><br />
-                    <a href="tel:+919047688178">+91 90476 88178</a>
-                </p>
-
-                <p><strong>Hours:</strong><br />
-                    Mon - Fri: 9am - 7pm<br />
-                    Saturday: 10am - 5pm<br />
-                    Sunday: Closed</p>
-
-                <!-- 5. PAYMENT INFO ADDED -->
-                <p style="margin-top:20px; border-top:1px solid #eee; padding-top:10px;">
-                    <strong>We Accept:</strong><br />
-                    Cash, Credit Cards, Apple Pay
-                </p>
-
-                <!-- 3. GOOGLE MAP IFRAME PLACEHOLDER -->
-                <!-- Replace the comment below with your Google Map <iframe> code -->
-                <div class="map-container">
-                    <iframe width="100%" height="100%" frameborder="0" style="border:0"
-                        src="https://maps.google.com/maps?q=10.10777,78.11366&hl=en&z=14&output=embed" allowfullscreen>
-                    </iframe>
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-primary text-white overflow-hidden border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2 relative">
+                    <div class="stitch-border p-2 inline-block">
+                        <img src="assets/about-workshop.jpg" alt="Traditional Bespoke Tailoring Workshop"
+                            class="shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
+                    </div>
+                    <div
+                        class="absolute -bottom-10 -right-10 w-64 h-64 bg-accent p-8 text-white hidden md:block shadow-2xl">
+                        <p class="text-4xl font-heading font-bold mb-2">25+</p>
+                        <p class="text-sm tracking-[2px] uppercase font-bold">Years of Pure Craftsmanship</p>
+                    </div>
                 </div>
-            </div>
-
-            <div class="booking-form">
-                <h3>Request a Fitting</h3>
-                <form name="contact" netlify method="POST">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" placeholder="John Doe" required />
-
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" placeholder="john@example.com" required />
-
-                    <label for="service">Service Needed</label>
-                    <select id="service" name="service">
-                        <option value="Custom Suit / Dress">Custom Suit / Dress</option>
-                        <option value="Alterations">Alterations</option>
-                        <option value="Repair">Repair</option>
-                        <option value="Consultation">Consultation</option>
-                    </select>
-
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="4"
-                        placeholder="Tell us about your event or specific needs..."></textarea>
-
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
+                <div class="lg:w-1/2">
+                    <span class="text-accent tracking-[4px] uppercase font-bold mb-4 block">Our Story</span>
+                    <h2 class="font-heading text-4xl md:text-5xl mb-8 leading-tight text-white">We Provide The <br>
+                        <span class="text-accent underline decoration-1 underline-offset-8 italic">Highest
+                            Quality</span>
+                        Garments
+                    </h2>
+                    <p class="text-white/60 mb-6 text-lg leading-relaxed">Founded in 1995, EasyFit Tailors has become
+                        a sanctuary for those who appreciate the art of the perfect fit. Our master tailors combine
+                        generational skills with modern aesthetics to create garments that are as unique as you are.</p>
+                    <p class="text-white/60 mb-10 text-lg leading-relaxed">Whether it's a bespoke suit for a wedding
+                        or a subtle adjustment to your favorite jacket, we treat every garment with the same level of
+                        reverence and precision.</p>
+                    <a href="#contact" class="inline-flex items-center space-x-4 group">
+                        <span
+                            class="font-bold tracking-[2px] uppercase text-sm text-white group-hover:text-accent transition-colors">Start
+                            Your Journey</span>
+                        <div class="w-12 h-[1px] bg-accent group-hover:w-16 transition-all">
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CALL FLOATING BUTTON -->
-    <a href="tel:+919047688178" class="call-float" aria-label="Call us">
-        <svg class="call-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path
-                d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.44-5.15-3.75-6.59-6.59l1.97-1.57c.26-.26.35-.63.24-1.01a17.9 17.9 0 0 0-.56-3.53.995.995 0 0 0-1-.75h-3.3c-.55 0-1 .45-1 1C4.06 13.52 13.52 23 23 23c.55 0 1-.45 1-1v-3.3c0-.52-.42-.97-.93-1.02z" />
-        </svg>
-    </a>
-
-    <!-- WHATSAPP FLOATING BUTTON -->
-    <a href="https://wa.me/+919047688178" class="whatsapp-float" target="_blank" aria-label="Chat on WhatsApp">
-        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path
-                d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z" />
-        </svg>
-    </a>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="container">
-            <div class="footer-col">
-                <h4>EasyFit Tailors</h4>
-                <p>Elevating style through precise craftsmanship.</p>
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-primary text-white">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <h2 class="font-heading text-4xl font-bold">Recent Masterpieces</h2>
+                    <p class="text-accent tracking-[2px] uppercase text-xs mt-2 font-bold">A Glimpse into our Workshop
+                    </p>
+                </div>
+                <a href="#"
+                    class="hidden md:block text-xs font-bold uppercase tracking-[4px] border-b border-white/20 hover:text-accent hover:border-accent transition-all pb-1">View
+                    All Work</a>
             </div>
-            <div class="footer-col">
-                <h4>Explore</h4>
-                <ul>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <!-- 7. LEGAL LINKS -->
-                <h4>Legal</h4>
-                <ul>
-                    <!-- Create these pages later: privacy.html and terms.html -->
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                    <li><a href="terms.html">Terms of Service</a></li>
-                </ul>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="group relative overflow-hidden aspect-[4/5] bg-default-800">
+                    <img src="assets/gallery-suit.jpg" alt="Emerald Bespoke Suit"
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span
+                            class="text-white tracking-[4px] uppercase text-xs font-bold border border-white/40 px-6 py-3">View
+                            Details</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden aspect-[4/5] bg-default-800 md:translate-y-12">
+                    <img src="assets/gallery-finished.jpg" alt="Finished Bespoke Masterpiece"
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span
+                            class="text-white tracking-[4px] uppercase text-xs font-bold border border-white/40 px-6 py-3">View
+                            Details</span>
+                    </div>
+                </div>
+                <div class="group relative overflow-hidden aspect-[4/5] bg-default-800">
+                    <img src="assets/gallery-detail.jpg" alt="Macro detail of artisan needle and thread work"
+                        class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <span
+                            class="text-white tracking-[4px] uppercase text-xs font-bold border border-white/40 px-6 py-3">View
+                            Details</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="container" style="border:none; padding:0;">
-            &copy; 2025 EasyFit Tailors. All rights reserved.
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-primary text-white">
+        <div class="container mx-auto px-6 text-center">
+            <i data-lucide="quote" class="text-accent w-12 h-12 mx-auto mb-10 opacity-50"></i>
+            <div id="testimonialSlider" class="max-w-3xl mx-auto overflow-hidden relative">
+                <div class="flex transition-transform duration-700 ease-in-out">
+                    <div class="w-full flex-shrink-0 px-4">
+                        <p class="font-heading text-2xl md:text-3xl italic mb-8 leading-relaxed">"The attention to
+                            detail at EasyFit is beyond anything I've experienced in Mumbai. My wedding suit fit like a
+                            second skin. Truly remarkable craftsmanship."</p>
+                        <span class="text-accent tracking-[4px] uppercase font-bold text-sm">— Rajesh K.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Booking -->
+    <section id="contact" class="py-24 bg-primary text-white border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-20">
+                <div class="lg:w-1/2">
+                    <h2 class="font-heading text-4xl mb-4">Visit Our Workshop</h2>
+                    <p class="text-white/60 mb-12">Experience the texture of our premium fabrics and discuss your
+                        project with our master tailors.</p>
+
+                    <div class="space-y-8">
+                        <div class="flex items-start space-x-6">
+                            <div class="bg-default-800/50 p-4 rounded-full">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold tracking-[2px] uppercase text-xs mb-2 text-accent">Location</h4>
+                                <p class="text-lg text-white">123 Fashion Avenue, Suite 101, Mumbai, MH 400001</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-6">
+                            <div class="bg-default-800/50 p-4 rounded-full">
+                                <i data-lucide="phone" class="w-6 h-6 text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold tracking-[2px] uppercase text-xs mb-2 text-accent">Appointments
+                                </h4>
+                                <p class="text-lg text-white">+91 90476 88178</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-6">
+                            <div class="bg-default-800/50 p-4 rounded-full">
+                                <i data-lucide="clock" class="w-6 h-6 text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold tracking-[2px] uppercase text-xs mb-2 text-accent">Workshop Hours
+                                </h4>
+                                <p class="text-lg text-white">Mon - Fri: 9am - 7pm / Sat: 10am - 5pm</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="mt-16 h-80 w-full overflow-hidden grayscale brightness-75 border border-white/10 shadow-2xl">
+                        <iframe width="100%" height="100%" frameborder="0" style="border:0"
+                            src="https://maps.google.com/maps?q=19.0760,72.8777&hl=en&z=14&output=embed"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <div class="bg-default-800/30 p-12 shadow-2xl relative border border-white/5">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 border-r-4 border-t-4 border-accent -mt-4 -mr-4 opacity-50">
+                        </div>
+                        <h3 class="font-heading text-3xl mb-10 text-center text-white">Inquiry & Fitting Request</h3>
+
+                        <form action="#" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label
+                                        class="block text-[10px] tracking-[2px] uppercase font-bold text-accent mb-2">Full
+                                        Name</label>
+                                    <input type="text" placeholder="John Doe"
+                                        class="w-full bg-primary/50 border border-white/10 px-6 py-4 focus:border-accent outline-none text-sm transition-all text-white placeholder:text-white/20">
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-[10px] tracking-[2px] uppercase font-bold text-accent mb-2">Email
+                                        Address</label>
+                                    <input type="email" placeholder="email@example.com"
+                                        class="w-full bg-primary/50 border border-white/10 px-6 py-4 focus:border-accent outline-none text-sm transition-all text-white placeholder:text-white/20">
+                                </div>
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-[10px] tracking-[2px] uppercase font-bold text-accent mb-2">Service
+                                    Needed</label>
+                                <select
+                                    class="w-full bg-primary/50 border border-white/10 px-6 py-4 focus:border-accent outline-none text-sm transition-all appearance-none text-white">
+                                    <option class="bg-primary">Bespoke Suit / Dress</option>
+                                    <option class="bg-primary">Wedding Attire</option>
+                                    <option class="bg-primary">Expert Alterations</option>
+                                    <option class="bg-primary">Other / Inquiry</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label
+                                    class="block text-[10px] tracking-[2px] uppercase font-bold text-accent mb-2">Your
+                                    Message</label>
+                                <textarea rows="4" placeholder="Tell us about your requirements..."
+                                    class="w-full bg-primary/50 border border-white/10 px-6 py-4 focus:border-accent outline-none text-sm transition-all text-white placeholder:text-white/20"></textarea>
+                            </div>
+                            <button
+                                class="w-full bg-accent text-white font-bold py-5 px-12 tracking-widest text-xs uppercase hover:bg-accent-dark transition-all shadow-xl">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white/50 py-24 border-t border-white/5">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20 text-center md:text-left">
+                <div class="md:col-span-1">
+                    <a href="#" class="flex flex-col mb-8">
+                        <span
+                            class="font-heading text-3xl font-bold tracking-widest text-white uppercase">EasyFit</span>
+                        <span class="text-[10px] tracking-[4px] text-accent uppercase font-bold -mt-1">Tailors</span>
+                    </a>
+                    <p class="text-sm leading-relaxed mb-8">Redefining elegance since 1995. We specialize in the art of
+                        the perfect fit, combining tradition with modern style.</p>
+                    <div class="flex justify-center md:justify-start space-x-6">
+                        <a href="#" class="hover:text-accent transition-colors"><i data-lucide="instagram"
+                                class="w-5 h-5"></i></a>
+                        <a href="#" class="hover:text-accent transition-colors"><i data-lucide="facebook"
+                                class="w-5 h-5"></i></a>
+                        <a href="#" class="hover:text-accent transition-colors"><i data-lucide="twitter"
+                                class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold tracking-[2px] uppercase text-xs mb-8">Navigation</h4>
+                    <ul class="space-y-4 text-sm font-bold tracking-widest uppercase">
+                        <li><a href="#services" class="hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">Our Story</a></li>
+                        <li><a href="#gallery" class="hover:text-white transition-colors">Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors">Book Fitting</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold tracking-[2px] uppercase text-xs mb-8">What We Offer</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li>Bespoke Men's Suits</li>
+                        <li>Custom Evening Gowns</li>
+                        <li>Professional Alterations</li>
+                        <li>Fabric Consultation</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold tracking-[2px] uppercase text-xs mb-8">Legal</h4>
+                    <ul class="space-y-4 text-sm font-bold tracking-widest uppercase">
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Terms of Use</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Return Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center pt-20 border-t border-white/5">
+                <p class="text-[10px] tracking-[4px] uppercase font-bold">2025 © EasyFit Tailors. All Rights Reserved.
+                    Luxury Reimagined.</p>
+            </div>
         </div>
     </footer>
 
-    <!-- LIGHTBOX CONTAINER -->
-    <div id="myLightbox" class="lightbox">
-        <span class="close-lightbox">&times;</span>
-        <img class="lightbox-content" id="img01" alt="Enlarged gallery image">
+    <!-- Floating Buttons -->
+    <a href="tel:+919047688178"
+        class="fixed bottom-32 right-8 z-50 bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-accent transition-all transform hover:scale-110">
+        <i data-lucide="phone" class="w-6 h-6"></i>
+    </a>
+    <a href="https://wa.me/+919047688178"
+        class="fixed bottom-12 right-8 z-50 bg-[#25d366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-[#128c7e] transition-all transform hover:scale-110">
+        <i data-lucide="message-circle" class="w-6 h-6"></i>
+    </a>
+
+    <!-- Mobile Menu Drawer (Hidden by Default) -->
+    <div id="mobileMenu" class="fixed inset-0 z-[100] bg-primary hidden opacity-0 transition-opacity duration-300">
+        <div class="flex flex-col h-full items-center justify-center space-y-12 text-center">
+            <button id="closeMenu" class="absolute top-10 right-10 text-white">
+                <i data-lucide="x" class="w-10 h-10"></i>
+            </button>
+            <a href="#home"
+                class="mobile-link font-heading text-4xl text-white hover:text-accent transition-colors">Home</a>
+            <a href="#services"
+                class="mobile-link font-heading text-4xl text-white hover:text-accent transition-colors">Services</a>
+            <a href="#about"
+                class="mobile-link font-heading text-4xl text-white hover:text-accent transition-colors">About</a>
+            <a href="#gallery"
+                class="mobile-link font-heading text-4xl text-white hover:text-accent transition-colors">Gallery</a>
+            <a href="#contact"
+                class="mobile-link font-heading text-4xl text-white hover:text-accent transition-colors">Contact</a>
+        </div>
     </div>
 
-    <!-- TOAST NOTIFICATION -->
-    <div id="toast" class="toast" role="alert" aria-live="polite">
-        Thank you! We will contact you shortly.
-    </div>
-
-    <!-- EXTERNAL JS -->
-    <script src="js/script.js"></script>
-
+    <!-- INTERACTIVITY SCRIPT MOVED TO JS/SCRIPT.JS -->
 </body>
 
 </html>

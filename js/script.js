@@ -4,18 +4,56 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
   }
 
-  // 2. Header Scroll Effect
-  const header = document.querySelector('header');
-  const handleHeaderScroll = () => {
-    if (window.scrollY > 50) {
-      header.classList.add('shadow-xl', 'py-2');
-      header.classList.remove('py-4');
+  // 2. Hybrid Navbar (Hero Mode vs. Floating Pill)
+  const nav = document.getElementById('mainNav') || document.querySelector('nav');
+  const pill = document.getElementById('navbarPill') || nav.querySelector('div');
+  let lastScrollY = window.scrollY;
+
+  const handleNavScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    // --- MODE SWITCHING ---
+    if (currentScrollY < 50) {
+      // HERO MODE (Top of page)
+      if (nav.classList.contains('top-6')) {
+        nav.classList.remove('top-6', '-translate-y-[150%]', 'opacity-0');
+        nav.classList.add('top-0', 'px-0');
+
+        // Morph Pill to Header
+        pill.classList.remove('rounded-full', 'max-w-3xl', 'bg-primary/95', 'p-1.5', 'pl-6', 'pr-2', 'border', 'shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]');
+        pill.classList.add('rounded-none', 'max-w-full', 'bg-primary/80', 'py-4', 'px-10', 'border-b', 'border-white/10');
+      }
     } else {
-      header.classList.remove('shadow-xl', 'py-2');
-      header.classList.add('py-4');
+      // PILL MODE (Scrolled)
+      if (nav.classList.contains('top-0')) {
+        nav.classList.remove('top-0', 'px-0');
+        nav.classList.add('top-6', 'px-4');
+
+        // Morph Header to Pill
+        pill.classList.remove('rounded-none', 'max-w-full', 'bg-primary/80', 'py-4', 'px-10', 'border-b');
+        pill.classList.add('rounded-full', 'max-w-3xl', 'bg-primary/95', 'p-1.5', 'pl-6', 'pr-2', 'border', 'shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5)]');
+        pill.classList.add('border-white/10');
+      }
+
+      // --- VISIBILITY (Hide/Show) - Only in Pill Mode ---
+      if (Math.abs(currentScrollY - lastScrollY) > 5) {
+        if (currentScrollY > lastScrollY) {
+          // Down -> Hide
+          nav.classList.add('-translate-y-[150%]', 'opacity-0');
+        } else {
+          // Up -> Show
+          nav.classList.remove('-translate-y-[150%]', 'opacity-0');
+        }
+      }
     }
+
+    lastScrollY = currentScrollY;
   };
-  window.addEventListener('scroll', handleHeaderScroll);
+
+  // Initial Check
+  handleNavScroll();
+  window.addEventListener('scroll', handleNavScroll);
+
 
   // 3. Mobile Menu Logic
   const menuBtn = document.getElementById('menuBtn');

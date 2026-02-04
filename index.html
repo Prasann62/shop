@@ -606,63 +606,7 @@
     </div>
 
     <!-- INTERACTIVITY SCRIPT MOVED TO JS/SCRIPT.JS -->
-    <script>
-        // Lucide Icons
-        lucide.createIcons();
-
-        // Mobile Menu
-        const menuBtn = document.getElementById('menuBtn');
-        const closeMenu = document.getElementById('closeMenu');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        function toggleMenu() {
-            if (mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.remove('hidden');
-                setTimeout(() => mobileMenu.style.opacity = '1', 10);
-            } else {
-                mobileMenu.style.opacity = '0';
-                setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-            }
-        }
-
-        menuBtn.addEventListener('click', toggleMenu);
-        closeMenu.addEventListener('click', toggleMenu);
-        mobileLinks.forEach(link => link.addEventListener('click', toggleMenu));
-
-        // Scroll Effects
-        const header = document.querySelector('header'); // May be null now, which is fine
-
-        const heroImg = document.getElementById('heroImg');
-        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-
-        function handleScroll() {
-            const scrollY = window.scrollY;
-
-            // Header Effect (Disabled for Floating Pill)
-            // if (scrollY > 50) { ... }
-
-
-            // Hero Parallax
-            if (heroImg) {
-                const speed = 0.5;
-                heroImg.style.transform = `translateY(${scrollY * speed}px) scale(${1 + scrollY * 0.0005})`;
-            }
-
-            // Reveal on Scroll
-            reveals.forEach(el => {
-                const revealTop = el.getBoundingClientRect().top;
-                const revealPoint = window.innerHeight * 0.8;
-
-                if (revealTop < revealPoint) {
-                    el.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', handleScroll);
-        window.addEventListener('load', handleScroll); // Initial check
-    </script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

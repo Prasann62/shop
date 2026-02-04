@@ -54,6 +54,16 @@ document.addEventListener('DOMContentLoaded', () => {
   handleNavScroll();
   window.addEventListener('scroll', handleNavScroll);
 
+  // 2.1 Hero Parallax
+  const heroImg = document.getElementById('heroImg');
+  if (heroImg) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const speed = 0.5;
+      heroImg.style.transform = `translateY(${scrollY * speed}px) scale(${1 + scrollY * 0.0005})`;
+    });
+  }
+
 
   // 3. Mobile Menu Logic
   const menuBtn = document.getElementById('menuBtn');

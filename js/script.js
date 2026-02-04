@@ -136,4 +136,28 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 500);
     }, 6000);
   }
+  // 7. WhatsApp Form Submission
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('contactName').value;
+      const email = document.getElementById('contactEmail').value;
+      const service = document.getElementById('contactService').value;
+      const message = document.getElementById('contactMessage').value;
+
+      const phoneNumber = "918608144068";
+      const text = `*New Inquiry from Website*
+Name: ${name}
+Email: ${email}
+Service: ${service}
+Message: ${message}`;
+
+      const encodedText = encodeURIComponent(text);
+      const url = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+
+      window.open(url, '_blank');
+    });
+  }
 });

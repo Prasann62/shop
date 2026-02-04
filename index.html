@@ -429,7 +429,7 @@
                             <div>
                                 <h4 class="font-bold tracking-[2px] uppercase text-xs mb-2 text-accent">Appointments
                                 </h4>
-                                <p class="text-lg text-white">+91 90476 88178</p>
+                                <p class="text-lg text-white">+91 86081 44068</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-6">
@@ -439,7 +439,7 @@
                             <div>
                                 <h4 class="font-bold tracking-[2px] uppercase text-xs mb-2 text-accent">WhatsApp
                                 </h4>
-                                <p class="text-lg text-white">+91 90476 88178</p>
+                                <p class="text-lg text-white">+91 86081 44068</p>
                             </div>
                         </div>
                         <div class="flex items-start space-x-6">
@@ -470,20 +470,20 @@
                         </div>
                         <h3 class="font-heading text-3xl mb-10 text-center text-white">Inquiry & Fitting Request</h3>
 
-                        <form action="#" class="space-y-6">
+                        <form id="contactForm" action="#" class="space-y-6">
                             <div class="grid md:grid-cols-2 gap-6">
                                 <div>
                                     <label
                                         class="block text-[10px] tracking-[2px] uppercase font-bold text-accent mb-2">Full
                                         Name</label>
-                                    <input type="text" placeholder="John Doe"
+                                    <input type="text" id="contactName" placeholder="John Doe"
                                         class="w-full bg-primary/50 border border-white/10 px-6 py-4 focus:border-accent outline-none text-sm transition-all text-white placeholder:text-white/20">
                                 </div>
                                 <div>
                                     <label
                                         class="block text-[10px] tracking-[2px] uppercase font-bold text-accent mb-2">Email
                                         Address</label>
-                                    <input type="email" placeholder="email@example.com"
+                                    <input type="email" id="contactEmail" placeholder="email@example.com"
                                         class="w-full bg-primary/50 border border-white/10 px-6 py-4 focus:border-accent outline-none text-sm transition-all text-white placeholder:text-white/20">
                                 </div>
                             </div>
@@ -491,7 +491,7 @@
                                 <label
                                     class="block text-[10px] tracking-[2px] uppercase font-bold text-accent mb-2">Service
                                     Needed</label>
-                                <select
+                                <select id="contactService"
                                     class="w-full bg-primary/50 border border-white/10 px-6 py-4 focus:border-accent outline-none text-sm transition-all appearance-none text-white">
                                     <option class="bg-primary">Bespoke Suit / Dress</option>
                                     <option class="bg-primary">Wedding Attire</option>
@@ -503,7 +503,7 @@
                                 <label
                                     class="block text-[10px] tracking-[2px] uppercase font-bold text-accent mb-2">Your
                                     Message</label>
-                                <textarea rows="4" placeholder="Tell us about your requirements..."
+                                <textarea id="contactMessage" rows="4" placeholder="Tell us about your requirements..."
                                     class="w-full bg-primary/50 border border-white/10 px-6 py-4 focus:border-accent outline-none text-sm transition-all text-white placeholder:text-white/20"></textarea>
                             </div>
                             <button
@@ -577,11 +577,11 @@
     </footer>
 
     <!-- Floating Buttons -->
-    <a href="tel:+919047688178"
+    <a href="tel:+918608144068"
         class="fixed bottom-32 right-8 z-50 bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-accent transition-all transform hover:scale-110">
         <i data-lucide="phone" class="w-6 h-6"></i>
     </a>
-    <a href="https://wa.me/+919047688178"
+    <a href="https://wa.me/+918608144068"
         class="fixed bottom-12 right-8 z-50 bg-[#25d366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-[#128c7e] transition-all transform hover:scale-110">
         <i data-lucide="message-circle" class="w-6 h-6"></i>
     </a>

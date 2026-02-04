@@ -50,10 +50,11 @@ The project uses the following technologies:
    - Double-click `index.html`
    - Or open it in a browser (Chrome/Firefox/Edge)
 
-3. (Optional) If you want the contact form to work:
-
-   - Go to https://formspree.io/ and create a new form
-   - Replace the `action` attribute in the `<form>` tag with your Formspree URL
+3. (Optional) The contact form is configured to send inquiries directly to WhatsApp.
+   
+   - Open `js/script.js`
+   - Search for `const phoneNumber` inside the form submission logic
+   - Update it with your own WhatsApp number (including country code, without `+`)
 
 ---
 

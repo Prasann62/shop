@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 4. Reveal on Scroll Animation
-  const revealElements = document.querySelectorAll('section, .reveal');
+  const revealElements = document.querySelectorAll('section, .reveal, .reveal-left, .reveal-right');
   const revealOnScroll = () => {
     const triggerBottom = window.innerHeight * 0.9;
     revealElements.forEach(el => {
